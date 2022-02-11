@@ -54,9 +54,6 @@ func (svc *Service) doSearchAndDownload(query string) searchAndDownloadResult {
 			fmt.Sprintf("ytsearch10:%s", strings.ReplaceAll(query, "\"", "")),
 			"--extract-audio",
 			"--audio-format", "opus",
-			"--no-playlist",
-			"--match-filter", fmt.Sprintf("duration < %d & !is_live", svc.maxDurationInSeconds),
-			"--max-downloads", "1",
 			"--output", fmt.Sprintf("%s/%d-%%(id)s.opus", svc.fileDirectory, start.Unix()),
 			"--print-json",
 			"--ignore-errors", // Ignores unavailable videos
